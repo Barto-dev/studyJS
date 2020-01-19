@@ -15,6 +15,38 @@ let canvas=document.getElementById("canvas");
 let ctx =canvas.getContext("2d");
 let width=canvas.width;
 let height=canvas.height;
+let blockSize=10;
+let widthInBlock=width/blockSize;
+let heightInBlock=height/blockSize;
+let score=0;
+
+//Рисует рамку игрового поля
+function drawBorder() {
+		ctx.fillStyle="Gray";
+		ctx.fillRect(0,0,width,blockSize);
+		ctx.fillRect(0,height-blockSize,width,blockSize);
+		ctx.fillRect(0,0,blockSize,height);
+		ctx.fillRect(width-blockSize,0,blockSize,height);
+};
+
+//Рисует текст в заданной позиции
+function drawScore() {
+		ctx.font="20px Courier";
+		ctx.fillStyle="Red";
+		ctx.textAlign="left";
+		ctx.textBaseline="top";
+		ctx.fillText("Счёт "+ score,blockSize,blockSize);
+};
+
+//Отображение завершения игры
+function gameOver() {
+		clearInterval(intervalID);
+		ctx.font="60px Courier";
+		ctx.fillStyle="Black";
+		ctx.textAlign="center";
+		ctx.textBaseline="middle";
+		ctx.fillText("Game over!",width/2,height/2)
+  }
 
 
 
