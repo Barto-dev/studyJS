@@ -90,10 +90,28 @@ function Snake () {
     this.nextDirection="right"
 };
 
-Snake.prototype.draw = function () {
+Snake.prototype.draw = function (head) {
     for (let i=0;i<this.segments.length;i++) {
         this.segments[i].drawSquare("Blue");
 		}
+};
+
+Snake.prototype.checkCollision = function () {
+   let leftCollision=(head.col===0);
+   let topCollision=(head.row===0);
+   let rightCollision=(head.col===widthInBlock-1);
+   let bottomCollision=(head.row===heightInBlock-1);
+
+   let wallCollision=leftCollision||topCollision||rightCollision||bottomCollision;
+
+   let selfCollision=false;
+
+   for (let i=0;i<this.segments.length;i++) {
+       if (head.equal(this.segments[i])) {
+           selfCollision=true;
+			 }
+	 }
+   return wallCollision||selfCollision;
 };
 
 Snake.prototype.move = function () {
