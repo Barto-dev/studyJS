@@ -14,13 +14,11 @@
         let loopLength=data.length; //получает заранее длинну списка чтобы цикл ниже выполнился корректно
         for (let i=0;i<loopLength;i++) { //перебирает весь массив
         	if (data.indexOf(0)!=-1) { //если находит 0 в массиве возврващает его индекс который не равен -1
-							data.splice(data.indexOf(0),1)};} //удаляет найденный 0 и повторяет итерацияю
+				data.splice(data.indexOf(0),1)};} //удаляет найденный 0 и повторяет итерацияю
         return data.reduce(function(a,b){return a*b}); //перемножает цифры в масиве начиная с первой (a)
     };
 
-    console.log(typeof digitsMultip(1230000549038));
-
-
+  
     // function digitsMultip(data) {
     //     data=String(data);
     //     data=data.split("");
